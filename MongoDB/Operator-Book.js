@@ -51,3 +51,48 @@ db.Book.aggregate([
     {$match:{"language":"English"}},
     {$count:"Total Count"},
 ])
+
+// Group:-
+db.Book.aggregate([
+    {
+        $group:{
+            _id:{language:"$language"},
+            author:{$push:"$author"},
+            total:{$sum:1}
+        }
+    },
+
+    {
+        $sort:{
+            _id:1
+        }
+    }
+])
+
+// Lookup:-
+
+db.user.aggregate([
+    {
+        $lookup:{
+            from:"teacher",
+            localField:"faculty",
+            foreignField:"name",
+            as:"Faculty"
+        }
+    }
+])
+
+
+//  Unwind:-
+db.user.aggregate([
+    {
+        $lookup:{
+            from:"teacher",
+            localField:"faculty",
+            foreignField:"name",
+            as:"Faculty"
+        }
+    },
+    {$unwind:"Faculty"}
+])
+
