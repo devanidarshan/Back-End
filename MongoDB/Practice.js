@@ -90,13 +90,12 @@ db.user.insertMany([
 db.user.find()
 db.user.find({gender: "male"})
 db.user.findOne({gender: "male"})
-db.user.updateOne({gender: "male"}, {$set: {gender:"male", course:"node.js Developer"}}, {upsert:true})
-db.user.updateOne({}, {$set: {gender:"male", course:"node js Developer"}}, {upsert:true})
+db.user.updateOne({gender: "male"}, {$set: {gender:"male", course:"node.js Developer"}}, {upsert:true})  // Update Only One
+db.user.updateOne({}, {$set: {gender:"male", course:"node js Developer"}}, {upsert:true})                // Update All
 db.user.deleteOne({age:20})
 db.user.deleteMany({gender:"Male"})
 db.user.drop()
 db.dropDatabase()
-
 
 db.createCollection("teacher");
 
@@ -124,5 +123,6 @@ db.teacher.insertMany([
 ]);
 
 db.teacher.find()
+
 
 
