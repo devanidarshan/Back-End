@@ -48,3 +48,27 @@
 // }
 // console.log(person);
 
+// ENUM:-
+// enum Color {
+//     red , pink , black , white , purple , orange
+// }
+// let x = Color.red;
+
+// CLASS:-
+// class Person {
+//     rollNo : number;
+//     name: string;
+//     constructor(r: number , n: string){
+//         this.rollNo = r;
+//         this.name = n;
+//     }
+//     showdetails() {
+//         console.log(this.name + " " + this.rollNo);
+//     }
+// }
+
+// let data = new  Person(20 , "skill");
+// data.showdetails();
+
+
+
