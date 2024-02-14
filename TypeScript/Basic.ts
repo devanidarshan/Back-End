@@ -49,10 +49,10 @@
 // console.log(person);
 
 // ENUM:-
-// enum Color {
-//     red , pink , black , white , purple , orange
-// }
-// let x = Color.red;
+enum Color {
+    red , pink , black , white , purple , orange
+}
+let x = Color.red;
 
 // CLASS:-
 // class Person {
