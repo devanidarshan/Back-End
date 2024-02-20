@@ -1,4 +1,5 @@
-// Path Module
+// PATH MODULE :-
+
 const path = require('path');
 
 // console.log(path.basename('D:/nodejs/file.js'));

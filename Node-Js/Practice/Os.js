@@ -1,4 +1,4 @@
-// OS :- Operating System
+// OS :- OPERATING SYSYTEM :-
 
 const os = require('os');
 
