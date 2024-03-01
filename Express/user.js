@@ -4,12 +4,12 @@ const port = 7777;
 const morgan = require('morgan');
 
 // Middleware
-app.use(express.json());                 //Built-in
+app.use(express.json());                //Built-in
 app.use(morgan('dev')); 
 
 
-const productRoute = require('./Routes/product.routes');
-app.use('/products', productRoute);
+const userRoute = require('./Task/Routes/user.routes');
+app.use('/users', userRoute);
 
 app.listen(port, () => {
     console.log(`Server start at http://localhost:7777`);
