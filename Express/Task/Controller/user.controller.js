@@ -24,7 +24,7 @@ exports.replaceUser = (req,res) =>{
     let userIndex = users.findIndex((item) => item.id === id);
     let user = users[userIndex];
     users.splice(userIndex, 1 , {...req.body});
-    // console.log(product);
+    // console.log(user);
     res.status(200).json({message:'User Replaced Successfully'});
 };
 
@@ -33,7 +33,7 @@ exports.updateUser = (req,res) =>{
     let userIndex = users.findIndex((item) => item.id === id);
     let user = users[userIndex];
     let item = users.splice(userIndex, 1 , {...user, ...req.body});
-    // console.log(product);
+    // console.log(user);
     res.status(200).json({message:'User Update Successfully'});
 };
 

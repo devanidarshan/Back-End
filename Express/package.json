@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node Server.js",
-    "dev":"nodemon user.js"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "mongoose": "^8.2.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
