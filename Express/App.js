@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 // Database Connection
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/darshan');
+    await mongoose.connect('mongodb://127.0.0.1:27017/product');
 }
 main()
 .then(() => console.log('DB is connected...'))
@@ -27,8 +27,11 @@ app.use(morgan('dev'));
 // app.use('/users', userRoute);
 
 // Database connection
-const userRoutes = require('./Routes/user.routes');
-app.use('/api/user', userRoutes);
+// const userRoutes = require('./Routes/user.routes');
+// app.use('/api/user', userRoutes);
+
+const product1Routes = require('./Routes/product1.routes');
+app.use('/api/products', product1Routes);
 
 app.listen(port, () => {
     console.log(`Server start at http://localhost:7777`);

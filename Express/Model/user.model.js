@@ -17,7 +17,12 @@ const userSchema = mongoose.Schema({
     },
     age : {
         type : Number
+    },
+    isDelete : {
+        type : Boolean,
+        default : false 
     }
+
 });
 
 module.exports = mongoose.model('users', userSchema);
