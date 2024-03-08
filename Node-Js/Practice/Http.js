@@ -6,7 +6,7 @@ const http = require('http');
 
 // 1ST METHOD :- CREATE SERVER
 
-const server = http.createServer((req,res) =>{
+const server1 = http.createServer((req,res) =>{
     // res.setHeader('Dummy','Dummy Value');
     // res.setHeader('Content-type','text/html');
     // res.setHeader('Content-type','application/json');
@@ -16,15 +16,15 @@ const server = http.createServer((req,res) =>{
 
 // 2ND METHOD :- CREATE SERVER
 
-// const server = http.createServer();
-// server.on('request',(req,res) =>{
-//     // res.setHeader('Content-type','text/html');
-//     // res.write('<h1 style = "color:red" >Hello</h1>');
-//     // res.write('{"Hello" : 123}');
-//     res.end();
-// }) // Server Create
+const server2 = http.createServer();
+server2.on('request',(req,res) =>{
+    // res.setHeader('Content-type','text/html');
+    // res.write('<h1 style = "color:red" >Hello</h1>');
+    // res.write('{"Hello" : 123}');
+    res.end();
+}) // Server Create
 
-server.listen(7777,() =>{
+server1.listen(7777,() =>{
     console.log('Server Start at Port 7777');
 });
 

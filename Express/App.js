@@ -27,11 +27,11 @@ app.use(morgan('dev'));
 // app.use('/users', userRoute);
 
 // Database connection
-// const userRoutes = require('./Routes/user.routes');
-// app.use('/api/user', userRoutes);
+const userRoutes = require('./Routes/user.routes');
+app.use('/api/user', userRoutes);
 
-const product1Routes = require('./Routes/product1.routes');
-app.use('/api/products', product1Routes);
+// const product1Routes = require('./Routes/product1.routes');
+// app.use('/api/products', product1Routes);
 
 app.listen(port, () => {
     console.log(`Server start at http://localhost:7777`);

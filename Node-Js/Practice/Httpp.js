@@ -8,34 +8,34 @@ const port = 7777;
 //  SWITCH CASE:-
 
 const server = http.createServer();
-// server.on("request", (req, res) => {
-//   console.log(req.url);
-// //   res.end(data);
-//   switch (req.url) {
-//     case "/":
-//       res.setHeader("Content-type", "text/html");
-//       res.write('<h3 style="color:blue">Welcome to NODE-JS</h3>');
-//       res.end();
-//       break;
+server.on("request", (req, res) => {
+  console.log(req.url);
+//   res.end(data);
+  switch (req.url) {
+    case "/":
+      res.setHeader("Content-type", "text/html");
+      res.write('<h3 style="color:blue">Welcome to NODE-JS</h3>');
+      res.end();
+      break;
 
-//     case "/product":
-//       res.setHeader("Content-type", "application/json");
-//       res.end(data);
-//       break;
+    case "/product":
+      res.setHeader("Content-type", "application/json");
+      res.end(data);
+      break;
 
-//     case "/user":
-//       res.setHeader("Content-type", "text/html");
-//       res.write('<h3 style="color:green">Welcome to User Page</h3>');
-//       res.end();
-//       break;
+    case "/user":
+      res.setHeader("Content-type", "text/html");
+      res.write('<h3 style="color:green">Welcome to User Page</h3>');
+      res.end();
+      break;
 
-//     default:
-//       res.setHeader("Content-type", "text/html");
-//       res.write('<h3 style="color:green">Page Not Found</h3>');
-//       res.end();
-//       break;
-//   }
-// }); // Server Create
+    default:
+      res.setHeader("Content-type", "text/html");
+      res.write('<h3 style="color:green">Page Not Found</h3>');
+      res.end();
+      break;
+  }
+}); // Server Create
 
 //  IF-ELSE CONDITION:-
 
