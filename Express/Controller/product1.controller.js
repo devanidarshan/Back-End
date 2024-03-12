@@ -1,18 +1,20 @@
 const  Product = require('../Model/product.model');
 
-// Add User
+
+// Add Product
 exports.addProduct = async (req, res) => {
      try {
         const {title,productDescription,productPrice,productCategory,} = req.body;
-      //   console.log(req.body);
-        let newProduct = await Product.create({
+        console.log(req.body);
+
+       let newproduct = await Product.create({
            title,
            productDescription,
            productPrice,
            productCategory
         });
-        newProduct.save();
-        res.status(201).json({Product: newProduct , message:'New Product Added'});
+        newproduct.save();
+        res.status(201).json({product:newproduct , message:'New Product is Added'});
      } catch (error) {
         console.log(error);
         res.status(500).json({message:'Internal Server Error'});
@@ -34,8 +36,8 @@ exports.getAllProducts = async (req, res) => {
 exports.getProduct = async (req, res) => {
    try {
       let productId = req.query.productId;
-      // let product = await Product.findById(productId);
-      let product = await Product.findOne({_id: productId, isDelete : false});
+      let product = await Product.findById(productId);
+      // let product = await Product.findOne({_id: productId, isDelete : false});
       if (!product) {
          return res.status(404).json({message : 'Product not found'});
       }
@@ -66,7 +68,7 @@ exports.updateProduct = async (req, res) => {
 // Delete Product
 exports.deleteProduct = async (req, res) => {
      try {
-       let productId = await req.query.productId;
+       let productId = req.query.productId;
        let product = await Product.findById(productId);
        if (!product) {
          return res.status(404).json({message : 'Product not found'});

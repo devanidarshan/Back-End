@@ -14,7 +14,8 @@ exports.registerUser = async (req, res) => {
       // Hash Password  
       let hashPassword = await bcrypt.hash(password,10);
       // console.log(hashPassword);
-        user = await User.create({
+      
+      user = await User.create({
             firstName,
             lastName,
             gender,
@@ -64,9 +65,9 @@ exports.getAllUsers = async (req, res) => {
 // Get Specific User
 exports.getUser = async (req, res) => {
    try {
-      let userId = req.query.userId;
-      // let user = await User.findById(userId);
-      let user = await User.findOne({_id: userId, isDelete : false});
+      let userId = req.user._id;
+      let user = await User.findById(userId);
+      // let user = await User.findOne({_id: userId, isDelete : false});
       if (!user) {
          return res.status(404).json({message : 'User not found'});
       }
@@ -76,10 +77,11 @@ exports.getUser = async (req, res) => {
       res.status(500).json({message:'Internal Server Error'});
    }
 }
+
 // Update User
 exports.updateUser = async (req, res) => {
    try {
-     let userId = await req.query.userId;
+     let userId = await req.user._id;
      let user = await User.findById(userId);
      if (!user) {
        return res.status(404).json({message : 'User not found'});
@@ -96,13 +98,15 @@ exports.updateUser = async (req, res) => {
 // Delete User
 exports.deleteUser = async (req, res) => {
      try {
-       let userId = await req.query.userId;
+       let userId = req.user._id;
        let user = await User.findById(userId);
+       console.log(user);
+       console.log(userId)
        if (!user) {
          return res.status(404).json({message : 'User not found'});
        }
       //  user = await User.findByIdAndDelete(user._id);
-      user  = await User.findOneAndUpdate({_id: user._id},{isDelete: true}, {new: true});
+      user  = await User.findOneAndUpdate({ _id: userId},{isDelete: true},{new : true});
        res.status(200).json({user,message: 'User Deleted...'});
      } catch (error) {
       console.log(error);

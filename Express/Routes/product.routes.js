@@ -1,5 +1,6 @@
 const express = require('express');
 const productRoute = express.Router();
+
 const { addProduct,
     deleteProduct,
     getAllProduct,
