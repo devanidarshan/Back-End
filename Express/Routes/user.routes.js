@@ -11,22 +11,22 @@ const {
   loginUser,
 } = require("../Controller/user.controller");
 
-// Registered User
+// REGISTERED USER
 userRoutes.post("/register-user", registerUser);
 
-// Login User
+// LOGIN USER
 userRoutes.post("/login-user", loginUser);
 
-// Get All Users
+// GET ALL USERS
 userRoutes.get("/get-all-users",verifyToken,getAllUsers);
 
-// Get User
+// GET USER
 userRoutes.get("/get-user",verifyToken,getUser);
 
-// Update User
+// UPDATE USER
 userRoutes.put("/update-user",verifyToken,updateUser);
 
-// Delete User
+// DELETE USER
 userRoutes.delete("/delete-user",verifyToken,deleteUser);
 
 module.exports = userRoutes;

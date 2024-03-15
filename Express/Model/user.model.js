@@ -10,7 +10,8 @@ const userSchema = mongoose.Schema({
         enum : ['Male', 'Female']
     },
     email : {
-        type : String
+        type : String,
+        unique : true
     },
     password : {
         type : String

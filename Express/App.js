@@ -22,27 +22,23 @@ app.use(express.json());                 //Built-in
 app.use(morgan('dev')); 
 
 
-// PRODUCTS ROUTES
-// const productRoute = require('./Routes/product.routes');
-// app.use('/products', productRoute);
-
-// USERS ROUTES
-// const userRoute = require('./Task/Routes/user.routes');
-// app.use('/users', userRoute);
-
 // Database connection:-
 
 // USER ROUTES
-// const userRoutes = require('./Routes/user.routes');
-// app.use('/api/user', userRoutes);
+const userRoutes = require('./Routes/user.routes');
+app.use('/api/user', userRoutes);
 
-// PRODUCT1 ROUTES
-// const product1Routes = require('./Routes/product1.routes');
-// app.use('/api/products', product1Routes);
+// PRODUCT ROUTES
+const productRoute = require('./Routes/product.routes');
+app.use('/api/product', productRoute);
 
 // CART ROUTES
 const cartRoutes = require('./Routes/cart.routes');
 app.use('/api/cart', cartRoutes);
+
+// ORDER ROUTES
+const orderRoutes = require('./Routes/order.routes');
+app.use('/api/order', orderRoutes);
 
 app.listen(port, () => {
     console.log(`Server start at http://localhost:${port}`);
