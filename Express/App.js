@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();                  //Server Create
 const port = process.env.PORT;
 const morgan = require('morgan');
+const path = require('path');
 
 // MONGOOOSE
 const mongoose = require('mongoose');
@@ -18,8 +19,10 @@ main()
 
 
 // MIDDLEWARE
+let imagePath = path.join(__dirname, 'public','images');
 app.use(express.json());                 //Built-in
 app.use(morgan('dev')); 
+app.use('/public/images', express.static(imagePath));
 
 
 // Database connection:-
