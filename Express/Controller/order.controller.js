@@ -6,7 +6,6 @@ exports.newOrder = async (req, res) => {
     try {
         let cartItems = await Cart.find({user: req.user._id, isDelete: false}).populate('cartItem');
         // res.send(cartItems);
-        console.log(cartItems);
         let orderItems = await cartItems.map(item => ({
             product: item.cartItem._id,
             quantity: item.quantity,

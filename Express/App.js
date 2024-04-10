@@ -5,7 +5,7 @@ const port = process.env.PORT;
 const morgan = require('morgan');
 const path = require('path');
 
-// MONGOOOSE
+// MONGOOSE
 const mongoose = require('mongoose');
 
 // DATABASE COLLECTION
