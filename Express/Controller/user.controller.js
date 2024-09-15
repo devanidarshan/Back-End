@@ -1,14 +1,20 @@
 const  User = require('../Model/user.model');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-// Add User
-exports.addUser = async (req, res) => {
+// Registered User
+exports.registerUser = async (req, res) => {
      try {
         const {firstName, lastName, gender, email, password, age} = req.body;
-      //   console.log(req.body);
+        let user = await User.findOne({email:email,isDelete:false});
+        if(user){
+         return res.status(400).json({message:'User is already registered...'});
+        }
+
+      // Hash Password  
       let hashPassword = await bcrypt.hash(password,10);
       // console.log(hashPassword);
-        let newUser = await User.create({
+        user = await User.create({
             firstName,
             lastName,
             gender,
@@ -17,12 +23,31 @@ exports.addUser = async (req, res) => {
             age,
             gender
         });
-        newUser.save();
-        res.status(201).json({User: newUser , message:'New User Added'});
+        user.save();
+        res.status(201).json({user: user , message:'New User is Added'});
      } catch (error) {
         console.log(error);
         res.status(500).json({message:'Internal Server Error'});
      }
+}
+
+// Login User
+exports.loginUser = async (req, res) => {
+   try {
+      let user = await User.findOne({email:req.body.email,isDelete:false});
+      if (!user) {
+         return res.status(404).json({message : 'User is not found'});
+      }
+      let ckeckPassword = await bcrypt.compare(req.body.password,user.password);
+      if(!ckeckPassword) {
+         return res.status(400).json({message : 'Password is incorrect'});
+      }
+      let token = jwt.sign({userId:user._id},'Darshan');
+      res.status(200).json({token,message: 'Login Successfully'});
+   } catch (error) {
+      console.log(error);
+      res.status(500).json({message:'Internal Server Error'});  
+   }
 }
 
 // Get All Users
